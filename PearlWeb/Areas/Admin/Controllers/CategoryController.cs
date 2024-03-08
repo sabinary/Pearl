@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Pearl.DataAccess.Data;
 using Pearl.DataAccess.Data.Repository.IRepository;
 using Pearl.Models;
+using Pearl.Utility;
 
 namespace PearlWeb.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+    [Authorize(Roles=SD.Role_Admin)]
 	public class CategoryController : Controller
     {
 

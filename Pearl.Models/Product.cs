@@ -26,10 +26,6 @@ namespace Pearl.Models
 		[Range(1, 10000)]
 		public double ListPrice { get; set; }
 
-
-	
-
-
 		public int CategoryId { get; set; }
 		[ForeignKey("CategoryId")]
 		[ValidateNever]

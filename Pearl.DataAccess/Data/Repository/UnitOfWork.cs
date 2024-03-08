@@ -1,4 +1,5 @@
 ﻿using Pearl.DataAccess.Data.Repository.IRepository;
+using Pearl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,20 @@ namespace Pearl.DataAccess.Data.Repository
 		private ApplicationDbContext _db;
 		public ICategoryRepository Category { get; private set; }
 		public IProductRepository Product { get; private set; }
-		public UnitOfWork(ApplicationDbContext db)
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+        public IOrderHeaderRepository OrderHeader { get; private set; }
+        public IOrderDetailRepository OrderDetail { get; private set; }
+        public UnitOfWork(ApplicationDbContext db)
 		{
 			_db = db;
-			Category = new CategoryRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
+            Category = new CategoryRepository(_db);
 			Product = new ProductRepository(_db);
-		}
+            OrderHeader = new OrderHeaderRepository(_db);
+            OrderDetail = new OrderDetailRepository(_db);
+        }
 
 		public void Save()
 		{
